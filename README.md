@@ -1,5 +1,9 @@
 influxdb example
 ========
+<img width="662" alt="Screenshot 2024-05-13 at 12 34 56 PM" src="https://github.com/iotlab101/nodered-influxdb/assets/13171662/cd4ed4cd-ec10-402c-a051-bb53ac96b1d1">
+
+
+<img width="1303" alt="Screenshot 2024-05-13 at 12 35 53 PM" src="https://github.com/iotlab101/nodered-influxdb/assets/13171662/63cb8e91-7eee-449f-89b5-48ddd9c8d7d4">
 
 ### io7uThermometer
 
