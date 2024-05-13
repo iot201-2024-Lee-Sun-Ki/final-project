@@ -1,1 +1,102 @@
-[]
+[
+    {
+        "id": "4aa2b5065132a1d5",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4eb601cfa6a75c02",
+        "type": "io7-hub",
+        "name": "app",
+        "host": "mqtt",
+        "useTLS": false,
+        "knownPort": true,
+        "port": "1883",
+        "tls": "",
+        "clientid": ""
+    },
+    {
+        "id": "4732af6811d8e4b7",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "deviceId": "thermometer1",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "e80ec6924b1d0453"
+            ]
+        ]
+    },
+    {
+        "id": "879107ab692ffe70",
+        "type": "debug",
+        "z": "4aa2b5065132a1d5",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e80ec6924b1d0453",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "injest",
+        "func": "if (msg.payload.d === undefined || msg.payload.d.temperature === undefined) {\n    return null;\n}\n\nlet token = '3zn-iGIqZEhm6BBql3R8SEe71Yi--EOVMicxcD8UYsxRQwFXXQEWWNnXaghyUQbvP-j7CJxuKE73yhoZsKMJQg==';\nlet bucket = 'bucket01';\n\nmsg.url = 'influxdb:8086/write?db=' + bucket;\nmsg.headers = {\n    Authorization : 'Token ' + token\n};\n\nvar id = msg.topic.split('/')[1];\nmsg.payload = `ambient,location=${id} temperature=${msg.payload.d.temperature}`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "36ea22c2c6b84ebc"
+            ]
+        ]
+    },
+    {
+        "id": "36ea22c2c6b84ebc",
+        "type": "http request",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "879107ab692ffe70"
+            ]
+        ]
+    }
+]
