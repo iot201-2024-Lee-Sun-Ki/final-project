@@ -12,75 +12,197 @@
         "type": "io7-hub",
         "name": "app",
         "host": "mqtt",
-        "useTLS": false,
+        "useTLS": true,
         "knownPort": true,
         "port": "1883",
         "tls": "",
         "clientid": ""
     },
     {
-        "id": "4732af6811d8e4b7",
-        "type": "io7 in",
+        "id": "401957fc50fad37a",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "a5d9dcfaf3891322",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "03cab814b6c243a1",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "c2314ff69c166e4b",
+        "type": "ui_group",
+        "name": "HOME",
+        "tab": "a5d9dcfaf3891322",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ddef73bb3b3b8dec",
+        "type": "inject",
         "z": "4aa2b5065132a1d5",
         "name": "",
-        "deviceId": "thermometer1",
-        "authentication": "4eb601cfa6a75c02",
-        "evt": "status",
-        "fmt": "json",
-        "qos": "0",
-        "allDevices": false,
-        "allEvents": false,
-        "allFormats": false,
-        "x": 130,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
         "y": 160,
         "wires": [
             [
-                "e80ec6924b1d0453"
+                "51aba6fe3e0695d9"
             ]
         ]
     },
     {
-        "id": "879107ab692ffe70",
-        "type": "debug",
-        "z": "4aa2b5065132a1d5",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 600,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "e80ec6924b1d0453",
+        "id": "51aba6fe3e0695d9",
         "type": "function",
         "z": "4aa2b5065132a1d5",
-        "name": "injest",
-        "func": "if (msg.payload.d === undefined || msg.payload.d.temperature === undefined) {\n    return null;\n}\n\nlet token = '3zn-iGIqZEhm6BBql3R8SEe71Yi--EOVMicxcD8UYsxRQwFXXQEWWNnXaghyUQbvP-j7CJxuKE73yhoZsKMJQg==';\nlet bucket = 'bucket01';\n\nmsg.url = 'influxdb:8086/write?db=' + bucket;\nmsg.headers = {\n    Authorization : 'Token ' + token\n};\n\nvar id = msg.topic.split('/')[1];\nmsg.payload = `ambient,location=${id} temperature=${msg.payload.d.temperature}`;\n\nreturn msg;",
+        "name": "openweather setup",
+        "func": "let lat = \"37.328128\";\nlet lon = \"126.689262\";\nlet key = '8d8d9d27819746b0580fa7caf1aa0020'\n\n\nmsg.url = 'http://api.openweathermap.org/data/2.5/weather?appid=' + key;\nmsg.url += '&lat=' + lat + '&lon=' + lon;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
+        "x": 370,
         "y": 160,
         "wires": [
             [
-                "36ea22c2c6b84ebc"
+                "239f02315dfee51d"
             ]
         ]
     },
     {
-        "id": "36ea22c2c6b84ebc",
+        "id": "239f02315dfee51d",
         "type": "http request",
         "z": "4aa2b5065132a1d5",
         "name": "",
-        "method": "POST",
+        "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
         "url": "",
@@ -91,12 +213,535 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 430,
+        "x": 590,
         "y": 160,
         "wires": [
             [
-                "879107ab692ffe70"
+                "5aa7e9490951d5ff"
             ]
         ]
+    },
+    {
+        "id": "5aa7e9490951d5ff",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "temp",
+        "func": "msg.payload = JSON.parse(msg.payload);\nvar temp1 = parseFloat(msg.payload.main.temp) - 273.15;\nmsg.payload.main.temp = temp1.toFixed(2);\nmsg.payload = {\n    \"d\": {\n        \"temp\": msg.payload.main.temp\n    }\n}\nglobal.set('outtemp', temp1.toFixed(2));\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 160,
+        "wires": [
+            [
+                "da34b112bd307464"
+            ]
+        ]
+    },
+    {
+        "id": "da34b112bd307464",
+        "type": "debug",
+        "z": "4aa2b5065132a1d5",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5c92f2e6bc7a3d2a",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "name": "bath1",
+        "deviceId": "bath1",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 150,
+        "y": 560,
+        "wires": [
+            [
+                "ded2fa137d62d24b"
+            ]
+        ]
+    },
+    {
+        "id": "7a731abbd911cbac",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "name": "bath2",
+        "deviceId": "bath2",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "9270dde44f94fd3e"
+            ]
+        ]
+    },
+    {
+        "id": "7e765e661452eb40",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "bath1",
+        "deviceId": "bath1",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 850,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "ded2fa137d62d24b",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "update ui",
+        "func": "let temperature = {\n    payload: msg.payload.d.temperature\n}\nlet valve = {\n    payload: msg.payload.d.valve\n}\nreturn [valve,temperature];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 560,
+        "wires": [
+            [
+                "d8a7daf582ded8f9"
+            ],
+            [
+                "5a90946ee6abdce7"
+            ]
+        ]
+    },
+    {
+        "id": "5a90946ee6abdce7",
+        "type": "ui_gauge",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "group": "c2314ff69c166e4b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}C",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 430,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d8a7daf582ded8f9",
+        "type": "ui_switch",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "label": "valve",
+        "tooltip": "",
+        "group": "c2314ff69c166e4b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "f0849151890b25fa"
+            ]
+        ]
+    },
+    {
+        "id": "f0849151890b25fa",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "command",
+        "func": "msg.payload = {\n    \"d\": {\n        \"valve\": msg.payload\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 560,
+        "wires": [
+            [
+                "7e765e661452eb40"
+            ]
+        ]
+    },
+    {
+        "id": "afa86d8ee5941f81",
+        "type": "ui_switch",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "c2314ff69c166e4b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "open",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "close",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "0598b8492d3147da"
+            ]
+        ]
+    },
+    {
+        "id": "e9e1c5a435662e00",
+        "type": "ui_switch",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "c2314ff69c166e4b",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "open",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "close",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 450,
+        "y": 420,
+        "wires": [
+            [
+                "43f0121884945b00"
+            ]
+        ]
+    },
+    {
+        "id": "0598b8492d3147da",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "function 3",
+        "func": "msg.payload = {\n    \"d\": {\n        \"door\": msg.payload\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "21cc6dd7ee35db24"
+            ]
+        ]
+    },
+    {
+        "id": "43f0121884945b00",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "function 4",
+        "func": "msg.payload = {\n    \"d\": {\n        \"window\": msg.payload\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 420,
+        "wires": [
+            [
+                "21cc6dd7ee35db24"
+            ]
+        ]
+    },
+    {
+        "id": "21cc6dd7ee35db24",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "bath2",
+        "deviceId": "bath2",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 770,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9270dde44f94fd3e",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "function 2",
+        "func": "\nlet door = {\n    payload: msg.payload.d.door\n}\nlet window = {\n    payload: msg.payload.d.window\n}\nreturn [door,window];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "afa86d8ee5941f81"
+            ],
+            [
+                "e9e1c5a435662e00"
+            ]
+        ]
+    },
+    {
+        "id": "60fed96ba3696b68",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "name": "living",
+        "deviceId": "living",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 150,
+        "y": 700,
+        "wires": [
+            [
+                "9c3d14cf08576341",
+                "808fa742d9484431"
+            ]
+        ]
+    },
+    {
+        "id": "ced4a79f88975731",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "living",
+        "deviceId": "living",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 850,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "9c3d14cf08576341",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "update ui",
+        "func": "var outtemp = global.get('outtemp');\n\nlet temperature = {\n    payload: msg.payload.d.temperature\n}\nflow.set('livingtemp', parseFloat(msg.payload.d.temperature));\n// if(msg.payload.d.temperature > outtemp){\n//     msg.payload.d.valve = 'on'\n// }else{\n//     msg.payload.d.valve = 'off'\n// }\nlet valve = {\n    payload: msg.payload.d.valve\n}\nreturn [valve,temperature];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 700,
+        "wires": [
+            [
+                "7e30493f9401211b"
+            ],
+            [
+                "f03bee60dcec3203"
+            ]
+        ]
+    },
+    {
+        "id": "f03bee60dcec3203",
+        "type": "ui_gauge",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "group": "c2314ff69c166e4b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}C",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 430,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "7e30493f9401211b",
+        "type": "ui_switch",
+        "z": "4aa2b5065132a1d5",
+        "name": "",
+        "label": "aircon",
+        "tooltip": "",
+        "group": "c2314ff69c166e4b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 450,
+        "y": 700,
+        "wires": [
+            [
+                "8141fdc9576c18b5"
+            ]
+        ]
+    },
+    {
+        "id": "8141fdc9576c18b5",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "command",
+        "func": "msg.payload = {\n    \"d\": {\n        \"valve\": msg.payload\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 700,
+        "wires": [
+            [
+                "ced4a79f88975731"
+            ]
+        ]
+    },
+    {
+        "id": "808fa742d9484431",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "name": "function 5",
+        "func": "// @ts-nocheck\nlet outtemp = global.get('outtemp');\nlet livingtemp = flow.get('livingtemp');\n// if(outtemp < msg.payload.d.temperature){\n//     msg.payload.d.door = 'close'\n//     msg.payload.d.window = 'open'\n// } else {\n//     msg.payload.d.door = 'open'\n//     msg.payload.d.window = 'close'\n// }\nlet evt1 = { d : {}};\n\nevt1.d.temp = msg.payload.d.temperature;\nlet livingtemp1 = livingtemp;\nif (isNaN(evt1.d.temp)){\n    evt1.d.temp = livingtemp1\n}\nelse{\n    livingtemp1 = livingtemp\n}\nif (25 < livingtemp) {\n    evt1.d.door = 'open';\n    evt1.d.window = 'close';\n} else {\n    evt1.d.door = 'close';\n    evt1.d.window = 'open';\n}\nreturn {payload : evt1};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 500,
+        "wires": [
+            [
+                "2dc5d37486a7dd62"
+            ]
+        ]
+    },
+    {
+        "id": "2dc5d37486a7dd62",
+        "type": "debug",
+        "z": "4aa2b5065132a1d5",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 500,
+        "wires": []
     }
 ]
