@@ -8,6 +8,96 @@
         "env": []
     },
     {
+        "id": "36c81b6aa90283ef",
+        "type": "group",
+        "z": "4aa2b5065132a1d5",
+        "name": "Bath with Living",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "5c92f2e6bc7a3d2a",
+            "7a731abbd911cbac",
+            "7e765e661452eb40",
+            "ded2fa137d62d24b",
+            "5a90946ee6abdce7",
+            "d8a7daf582ded8f9",
+            "f0849151890b25fa",
+            "afa86d8ee5941f81",
+            "e9e1c5a435662e00",
+            "0598b8492d3147da",
+            "43f0121884945b00",
+            "21cc6dd7ee35db24",
+            "9270dde44f94fd3e",
+            "60fed96ba3696b68",
+            "ced4a79f88975731",
+            "9c3d14cf08576341",
+            "f03bee60dcec3203",
+            "7e30493f9401211b",
+            "8141fdc9576c18b5",
+            "808fa742d9484431",
+            "2dc5d37486a7dd62"
+        ],
+        "x": 74,
+        "y": 339,
+        "w": 852,
+        "h": 442
+    },
+    {
+        "id": "6babdb777370422d",
+        "type": "group",
+        "z": "4aa2b5065132a1d5",
+        "name": "Kitchen",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b5b0393e8aa3344d",
+            "7fe57bd97d257440",
+            "75683e04a0e1a9ac",
+            "64c9cdf51578deb6",
+            "d0b886895e89963f",
+            "ece63fa085132321",
+            "3475385c5b4e8c34",
+            "342e668123c22ee4",
+            "ca8a1f3d43772f95",
+            "5d4e1b03284c344d",
+            "711cc0778fd4485a"
+        ],
+        "x": 74,
+        "y": 819,
+        "w": 792,
+        "h": 282
+    },
+    {
+        "id": "5cc4c9928f816d47",
+        "type": "group",
+        "z": "4aa2b5065132a1d5",
+        "name": "garage",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "dd3447b503ede336",
+            "d6aa871f67b16863",
+            "3624f8991b1f3300",
+            "00d2fab6f01a2f5e",
+            "762a8dd9eeac0edf",
+            "8b2ffbe8478573fd",
+            "627e53f5e772682a",
+            "14e37cc82e01eb26",
+            "a6c99aa99e9739cc",
+            "a1fcce5feb6a0382",
+            "4dd71a2624cb4fb8",
+            "2de9c6b7ae993660",
+            "949fd6a2496df6f8"
+        ],
+        "x": 74,
+        "y": 1119,
+        "w": 832,
+        "h": 342
+    },
+    {
         "id": "4eb601cfa6a75c02",
         "type": "io7-hub",
         "name": "app",
@@ -262,6 +352,7 @@
         "id": "5c92f2e6bc7a3d2a",
         "type": "io7 in",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "bath1",
         "deviceId": "bath1",
         "authentication": "4eb601cfa6a75c02",
@@ -283,14 +374,15 @@
         "id": "7a731abbd911cbac",
         "type": "io7 in",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "bath2",
         "deviceId": "bath2",
         "authentication": "4eb601cfa6a75c02",
-        "evt": "+",
+        "evt": "status",
         "fmt": "json",
         "qos": "0",
         "allDevices": false,
-        "allEvents": true,
+        "allEvents": false,
         "allFormats": false,
         "x": 150,
         "y": 400,
@@ -304,6 +396,7 @@
         "id": "7e765e661452eb40",
         "type": "io7 out",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "authentication": "4eb601cfa6a75c02",
         "name": "bath1",
         "deviceId": "bath1",
@@ -319,6 +412,7 @@
         "id": "ded2fa137d62d24b",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "update ui",
         "func": "let temperature = {\n    payload: msg.payload.d.temperature\n}\nlet valve = {\n    payload: msg.payload.d.valve\n}\nreturn [valve,temperature];",
         "outputs": 2,
@@ -342,6 +436,7 @@
         "id": "5a90946ee6abdce7",
         "type": "ui_gauge",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "group": "c2314ff69c166e4b",
         "order": 0,
@@ -370,6 +465,7 @@
         "id": "d8a7daf582ded8f9",
         "type": "ui_switch",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "label": "valve",
         "tooltip": "",
@@ -404,6 +500,7 @@
         "id": "f0849151890b25fa",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "command",
         "func": "msg.payload = {\n    \"d\": {\n        \"valve\": msg.payload\n    }\n}\nreturn msg;\n",
         "outputs": 1,
@@ -424,6 +521,7 @@
         "id": "afa86d8ee5941f81",
         "type": "ui_switch",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "label": "switch",
         "tooltip": "",
@@ -458,6 +556,7 @@
         "id": "e9e1c5a435662e00",
         "type": "ui_switch",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "label": "switch",
         "tooltip": "",
@@ -492,6 +591,7 @@
         "id": "0598b8492d3147da",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "function 3",
         "func": "msg.payload = {\n    \"d\": {\n        \"door\": msg.payload\n    }\n}\nreturn msg;",
         "outputs": 1,
@@ -512,6 +612,7 @@
         "id": "43f0121884945b00",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "function 4",
         "func": "msg.payload = {\n    \"d\": {\n        \"window\": msg.payload\n    }\n}\nreturn msg;",
         "outputs": 1,
@@ -532,10 +633,11 @@
         "id": "21cc6dd7ee35db24",
         "type": "io7 out",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "authentication": "4eb601cfa6a75c02",
         "name": "bath2",
         "deviceId": "bath2",
-        "cmd": "",
+        "cmd": "power",
         "fmt": "json",
         "qos": "0",
         "retain": "false",
@@ -547,6 +649,7 @@
         "id": "9270dde44f94fd3e",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "function 2",
         "func": "\nlet door = {\n    payload: msg.payload.d.door\n}\nlet window = {\n    payload: msg.payload.d.window\n}\nreturn [door,window];",
         "outputs": 2,
@@ -570,6 +673,7 @@
         "id": "60fed96ba3696b68",
         "type": "io7 in",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "living",
         "deviceId": "living",
         "authentication": "4eb601cfa6a75c02",
@@ -592,6 +696,7 @@
         "id": "ced4a79f88975731",
         "type": "io7 out",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "authentication": "4eb601cfa6a75c02",
         "name": "living",
         "deviceId": "living",
@@ -607,6 +712,7 @@
         "id": "9c3d14cf08576341",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "update ui",
         "func": "var outtemp = global.get('outtemp');\n\nlet temperature = {\n    payload: msg.payload.d.temperature\n}\nflow.set('livingtemp', parseFloat(msg.payload.d.temperature));\n// if(msg.payload.d.temperature > outtemp){\n//     msg.payload.d.valve = 'on'\n// }else{\n//     msg.payload.d.valve = 'off'\n// }\nlet valve = {\n    payload: msg.payload.d.valve\n}\nreturn [valve,temperature];",
         "outputs": 2,
@@ -630,6 +736,7 @@
         "id": "f03bee60dcec3203",
         "type": "ui_gauge",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "group": "c2314ff69c166e4b",
         "order": 0,
@@ -658,6 +765,7 @@
         "id": "7e30493f9401211b",
         "type": "ui_switch",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "",
         "label": "aircon",
         "tooltip": "",
@@ -692,6 +800,7 @@
         "id": "8141fdc9576c18b5",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "command",
         "func": "msg.payload = {\n    \"d\": {\n        \"valve\": msg.payload\n    }\n}\nreturn msg;\n",
         "outputs": 1,
@@ -712,8 +821,9 @@
         "id": "808fa742d9484431",
         "type": "function",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "function 5",
-        "func": "// @ts-nocheck\nlet outtemp = global.get('outtemp');\nlet livingtemp = flow.get('livingtemp');\n// if(outtemp < msg.payload.d.temperature){\n//     msg.payload.d.door = 'close'\n//     msg.payload.d.window = 'open'\n// } else {\n//     msg.payload.d.door = 'open'\n//     msg.payload.d.window = 'close'\n// }\nlet evt1 = { d : {}};\n\nevt1.d.temp = msg.payload.d.temperature;\nlet livingtemp1 = livingtemp;\nif (isNaN(evt1.d.temp)){\n    evt1.d.temp = livingtemp1\n}\nelse{\n    livingtemp1 = livingtemp\n}\nif (25 < livingtemp) {\n    evt1.d.door = 'open';\n    evt1.d.window = 'close';\n} else {\n    evt1.d.door = 'close';\n    evt1.d.window = 'open';\n}\nreturn {payload : evt1};\n",
+        "func": "// @ts-nocheck\nlet outtemp = global.get('outtemp');\nlet livingtemp = flow.get('livingtemp');\n// if(outtemp < msg.payload.d.temperature){\n//     msg.payload.d.door = 'close'\n//     msg.payload.d.window = 'open'\n// } else {\n//     msg.payload.d.door = 'open'\n//     msg.payload.d.window = 'close'\n// }\nlet evt1 = { d : {}};\n\nevt1.d.temp = msg.payload.d.temperature;\nlet livingtemp1 = livingtemp;\nif (isNaN(evt1.d.temp)){\n    evt1.d.temp = livingtemp1\n}\nelse{\n    livingtemp1 = livingtemp\n}\nif (25 < livingtemp) {\n    evt1.d.door = 'open';\n    evt1.d.window = 'close';\n} else if(25>livingtemp) {\n    evt1.d.door = 'close';\n    evt1.d.window = 'open';\n}\nreturn {payload : evt1};\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -724,7 +834,8 @@
         "y": 500,
         "wires": [
             [
-                "2dc5d37486a7dd62"
+                "2dc5d37486a7dd62",
+                "21cc6dd7ee35db24"
             ]
         ]
     },
@@ -732,8 +843,9 @@
         "id": "2dc5d37486a7dd62",
         "type": "debug",
         "z": "4aa2b5065132a1d5",
+        "g": "36c81b6aa90283ef",
         "name": "debug 2",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -743,5 +855,513 @@
         "x": 500,
         "y": 500,
         "wires": []
+    },
+    {
+        "id": "b5b0393e8aa3344d",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "kitchen_neopixel",
+        "deviceId": "kitchen_neopixel",
+        "cmd": "target",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 750,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "7fe57bd97d257440",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "kitchen_fire_sensor",
+        "deviceId": "kitchen_fire_sensor",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "status",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": false,
+        "allFormats": false,
+        "x": 190,
+        "y": 860,
+        "wires": [
+            [
+                "75683e04a0e1a9ac"
+            ]
+        ]
+    },
+    {
+        "id": "75683e04a0e1a9ac",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "payload",
+        "func": "flow.set(\"frame\", msg.payload.d.flame);\nmsg.payload = msg.payload.d.flame\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 860,
+        "wires": [
+            [
+                "64c9cdf51578deb6"
+            ]
+        ]
+    },
+    {
+        "id": "64c9cdf51578deb6",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "color",
+        "func": "let color = { \"r\": 0, \"g\": 0, \"b\": 0 }\n\nvar frame = flow.get(\"frame\")\nvar fire = flow.get(\"fire\")\nfire === 'on' || frame === '1'\nif (msg.payload === 1) {\n    color = { \"r\": 20, \"g\": 20, \"b\": 20 }\n\n} else if (fire === 'off' || frame === '0') {\n    color = { \"r\": 60, \"g\": 0, \"b\": 0 }\n}\n\nmsg.payload = { \"d\": { \"color\": color } }\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "b5b0393e8aa3344d"
+            ]
+        ]
+    },
+    {
+        "id": "d0b886895e89963f",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "kitchen_fan",
+        "deviceId": "kitchen_fan",
+        "cmd": "target",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 690,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "ece63fa085132321",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "on / off",
+        "func": "let evt1 = { d: {} };\n\nif (70 < msg.payload.d.humidity) {\n    evt1.d.fan = 'on';\n}\nelse {\n    evt1.d.fan = 'off';\n}\n\nreturn { payload: evt1 };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1020,
+        "wires": [
+            [
+                "d0b886895e89963f",
+                "5d4e1b03284c344d"
+            ]
+        ]
+    },
+    {
+        "id": "3475385c5b4e8c34",
+        "type": "inject",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "on",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"d\" : {\"fan\" : \"on\"}}",
+        "payloadType": "json",
+        "x": 510,
+        "y": 980,
+        "wires": [
+            [
+                "d0b886895e89963f"
+            ]
+        ]
+    },
+    {
+        "id": "342e668123c22ee4",
+        "type": "inject",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"d\" : {\"fan\" : \"off\"}}",
+        "payloadType": "json",
+        "x": 510,
+        "y": 1060,
+        "wires": [
+            [
+                "d0b886895e89963f"
+            ]
+        ]
+    },
+    {
+        "id": "ca8a1f3d43772f95",
+        "type": "inject",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "humidity",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"d\" :{\"humidity\" : 80}}",
+        "payloadType": "json",
+        "x": 260,
+        "y": 1020,
+        "wires": [
+            [
+                "ece63fa085132321",
+                "711cc0778fd4485a"
+            ]
+        ]
+    },
+    {
+        "id": "5d4e1b03284c344d",
+        "type": "debug",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "on/off",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "711cc0778fd4485a",
+        "type": "debug",
+        "z": "4aa2b5065132a1d5",
+        "g": "6babdb777370422d",
+        "name": "humidity",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "dd3447b503ede336",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "global",
+        "func": "flow.set(\"distance1\", msg.payload.d.distance1);\nflow.set(\"distance2\", msg.payload.d.distance2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6aa871f67b16863",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "door",
+        "func": "var distance1 = flow.get(\"distance1\")\nvar distance2 = flow.get(\"distance2\")\nlet evt3 = { d: {} };\n\nif (distance1 >= 20 && distance2 >= 20) {\n    evt3.d.mot = 'on';\n} else {\n    evt3.d.mot = 'off';\n}\n\n\nreturn { payload: evt3 };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1220,
+        "wires": [
+            [
+                "2de9c6b7ae993660"
+            ]
+        ]
+    },
+    {
+        "id": "3624f8991b1f3300",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "function 8",
+        "func": "msg.payload = msg.payload.d.valve;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1300,
+        "wires": [
+            [
+                "949fd6a2496df6f8"
+            ]
+        ]
+    },
+    {
+        "id": "00d2fab6f01a2f5e",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "function 9",
+        "func": "msg.payload = {\"d\" :{\"value\" : msg.payload}}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 1300,
+        "wires": [
+            [
+                "4dd71a2624cb4fb8"
+            ]
+        ]
+    },
+    {
+        "id": "762a8dd9eeac0edf",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "function 10",
+        "func": "let evt1 = { d : {} };\nvar frame = flow.get(\"frame\")\nvar fire = flow.get(\"fire\")\n\nif (fire === 'on' || frame === '0') {\n    evt1.d.color = { r: 255, g: 0, b: 0 };\n} \n\nelse if (fire === 'off' || frame === '1') {\n    evt1.d.color = { r: 255, g: 255, b: 255 };\n}\nreturn { payload : evt1 };\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1360,
+        "wires": [
+            [
+                "4dd71a2624cb4fb8"
+            ]
+        ]
+    },
+    {
+        "id": "8b2ffbe8478573fd",
+        "type": "function",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "function 11",
+        "func": "let evt1 = { d : {} };\nvar frame = flow.get(\"frame\")\nvar fire = flow.get(\"fire\")\n\nif (fire === 'on' || frame === '0') {\n    evt1.d.color = { r: 255, g: 0, b: 0 };\n} \n\nelse if (fire === 'off' || frame === '1') {\n    evt1.d.color = { r: 255, g: 255, b: 255 };\n}\nreturn { payload : evt1 };\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1420,
+        "wires": [
+            [
+                "a1fcce5feb6a0382"
+            ]
+        ]
+    },
+    {
+        "id": "627e53f5e772682a",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "HCSR04",
+        "deviceId": "HCSR04",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 160,
+        "y": 1220,
+        "wires": [
+            [
+                "dd3447b503ede336",
+                "d6aa871f67b16863"
+            ]
+        ]
+    },
+    {
+        "id": "14e37cc82e01eb26",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "Springcooler",
+        "deviceId": "spring",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 170,
+        "y": 1300,
+        "wires": [
+            [
+                "3624f8991b1f3300"
+            ]
+        ]
+    },
+    {
+        "id": "a6c99aa99e9739cc",
+        "type": "io7 in",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "Fire",
+        "deviceId": "garage_fire_sensor",
+        "authentication": "4eb601cfa6a75c02",
+        "evt": "+",
+        "fmt": "json",
+        "qos": "0",
+        "allDevices": false,
+        "allEvents": true,
+        "allFormats": false,
+        "x": 150,
+        "y": 1420,
+        "wires": [
+            [
+                "762a8dd9eeac0edf",
+                "8b2ffbe8478573fd"
+            ]
+        ]
+    },
+    {
+        "id": "a1fcce5feb6a0382",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "Fire",
+        "deviceId": "garage_fire_sensor",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 470,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "4dd71a2624cb4fb8",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "Springcooler",
+        "deviceId": "spring",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 810,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "2de9c6b7ae993660",
+        "type": "io7 out",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "authentication": "4eb601cfa6a75c02",
+        "name": "HCSR04",
+        "deviceId": "HCSR04",
+        "cmd": "",
+        "fmt": "json",
+        "qos": "0",
+        "retain": "false",
+        "x": 460,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "949fd6a2496df6f8",
+        "type": "ui_switch",
+        "z": "4aa2b5065132a1d5",
+        "g": "5cc4c9928f816d47",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "c2314ff69c166e4b",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 490,
+        "y": 1300,
+        "wires": [
+            [
+                "00d2fab6f01a2f5e"
+            ]
+        ]
     }
 ]
